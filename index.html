@@ -1,0 +1,298 @@
+<!DOCTYPE html>  
+<html lang="pt-BR">  
+<head>  
+
+ 
+
+  <meta charset="UTF-8" />  
+
+ 
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />  
+
+ 
+
+  <title>Loja de Eletrônicos</title>  
+
+ 
+
+  <link rel="stylesheet" href="style.css" />  
+
+ 
+
+</head>  
+<body>  
+
+ 
+
+  <header>  
+
+ 
+
+    <div class="logo-container">  
+
+ 
+
+      <img src="Dark Tech.png" alt="Logo da Loja" class="logo" />  
+
+ 
+
+      <h1>Dark-Tech</h1>  
+
+ 
+
+    </div>  
+
+ 
+
+    <input type="search" id="searchInput" placeholder="Pesquisar produtos..." aria-label="Pesquisar produtos" />  
+
+ 
+
+    <button id="cartToggleBtn" title="Ver carrinho">Carrinho (<span id="cartCount">0</span>)</button>  
+
+ 
+
+  </header>  
+
+ 
+
+  
+
+ 
+
+  <section class="carousel-section">  
+
+ 
+
+    <div class="carousel-container" id="carousel">  
+
+ 
+
+      <img class="carousel-image" src="https://img.freepik.com/psd-gratuitas/novo-modelo-de-design-de-capa-de-midia-social-para-smartphone_47987-25433.jpg" alt="Samsung Galaxy" />  
+
+ 
+
+      <img class="carousel-image hidden" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7VjVlR-bRvaf37CoqNT2a0sgErpOEAwxF0Q&s" alt="iPhone" />  
+
+ 
+
+      <img class="carousel-image hidden" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDKZrTunWRebvJ1O2eWFdIMNgvCdbThiGw4g&s" alt="Motorola" />  
+
+ 
+
+      <img class="carousel-image hidden" src="https://samsung.com.br/services/assets/images/para-voce-banner2-20230225.jpg" alt="Redmi" />  
+
+ 
+
+      <img class="carousel-image hidden" src="https://etimg.etb2bimg.com/photo/96783408.cms" alt="Poco" />  
+
+ 
+
+    </div>  
+
+ 
+
+    <button id="prevSlide" aria-label="Imagem anterior">&#10094;</button>  
+
+ 
+
+    <button id="nextSlide" aria-label="Próxima imagem">&#10095;</button>  
+
+ 
+
+  </section>  
+
+ 
+
+  
+
+ 
+
+  <section class="brands-section">  
+
+ 
+
+    <h2>Marcas</h2>  
+
+ 
+
+    <div class="brands-container">  
+
+ 
+
+      <img src="https://images.samsung.com/is/image/samsung/assets/global/about-us/brand/logo/256_144_4.png?$512_N_PNG$" alt="Samsung" class="brand-logo" data-brand="Samsung" />  
+
+ 
+
+      <img src="https://wallpapers.com/images/hd/plain-logo-macbook-air-xxznnlc3edutq5ve.jpg" alt="Iphone" class="brand-logo" data-brand="Iphone" />  
+
+ 
+
+      <img src="https://static.vecteezy.com/ti/vetor-gratis/t1/20927102-motorola-marca-logotipo-telefone-simbolo-azul-projeto-eua-movel-ilustracao-com-preto-fundo-gratis-vetor.jpg" alt="Motorola" class="brand-logo" data-brand="Motorola" />  
+
+ 
+
+      <img src="https://t2.tudocdn.net/519252?w=1920&h=1080" alt="Redmi" class="brand-logo" data-brand="Redmi" />  
+
+ 
+
+      <img src="https://t2.tudocdn.net/523258?w=1200&h=1200" alt="Poco" class="brand-logo" data-brand="Poco" />  
+
+ 
+
+    </div>  
+
+ 
+
+  </section>  
+
+ 
+
+  
+
+ 
+
+  <section class="products-section">  
+
+ 
+
+    <h2>Produtos</h2>  
+
+ 
+
+    <div class="products-container" id="productsContainer">  
+
+ 
+
+      <!-- Produtos carregados pelo JS -->  
+
+ 
+
+    </div>  
+
+ 
+
+  </section>  
+
+ 
+
+  
+
+ 
+
+  <aside class="cart" id="cart">  
+
+ 
+
+    <h2>Carrinho</h2>  
+
+ 
+
+    <div id="cartItems"></div>  
+
+ 
+
+    <div class="cart-total">  
+
+ 
+
+      Total: R$ <span id="cartTotal">0.00</span>  
+
+ 
+
+    </div>  
+
+ 
+
+    <button id="checkoutBtn">Finalizar Compra</button>  
+
+ 
+
+    <button id="closeCartBtn">Fechar</button>  
+
+ 
+
+  </aside>  
+
+ 
+
+  
+
+ 
+
+  <footer>  
+
+ 
+
+    <section class="about-section">  
+
+ 
+
+      <h3>Sobre a Empresa</h3>  
+
+ 
+
+      <p>Somos uma loja especializada em tecnologia, trazendo os melhores smartphones e acessórios para você.</p>  
+
+ 
+
+    </section>  
+
+ 
+
+    <section class="social-section">  
+
+ 
+
+      <h3>Redes Sociais</h3>  
+
+ 
+
+      <a href="ggggg" target="_blank" rel="noopener" aria-label="Facebook">Facebook</a> |  
+
+ 
+
+      <a href="gggggg" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a> |  
+
+ 
+
+      <a href="gggggg" target="_blank" rel="noopener" aria-label="Twitter">Twitter</a>  
+
+ 
+
+    </section>  
+
+ 
+
+  </footer>  
+
+ 
+
+  
+
+ 
+
+  <script src="script.js"></script>  
+
+ 
+
+</body>  
+
+ 
+
+</html>  
+
+ 
+
+  
+
+ 
+
+  
+
+ 
+
+ 
+
+ 
