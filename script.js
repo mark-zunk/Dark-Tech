@@ -1,285 +1,415 @@
-// Dados dos produtos organizados por marca
-const productsData = {
-  Samsung: [
-    { id: "s1", name: "Galaxy S23 Ultra", price: 6799, img: "gg" },
-    { id: "s2", name: "Galaxy S22", price: 3999, img: "https://images.samsung.com/is/image/samsung/p6pim/br/galaxy-s22/gallery/br-galaxy-s22-ultra-5g-s908-sm-s908ezgdzto-530331983?$730_584_PNG$" },
-    { id: "s3", name: "Galaxy A53", price: 1799, img: "https://images.samspim/br/galaxy-a53-5g/gallery/br-galaxy-a53-5g-a536-396261-sm-a536ezgdzto-530276509?$730_584_PNG$" },
-    { id: "s4", name: "Galaxy Z Fold4", price: 8999, img: "https://images.samsung.com/is/image/samsung/p6pim/br/2208/gallery/br-galaxy-z-fold4-5g-f936-sm-f936blgdzto-530049013?$730_584_PNG$" },
-    { id: "s5", name: "Galaxy Tab S8", price: 3399, img: "https://images.samsung.com/is/image/samsung/p6pim/br/tablets/galaxy-tab-s8/gallery/br-galaxy-tab-s8-ultra-5g-navy-600236-sm-x906nznzbrl-530309088?$730_584_PNG$" }
-  ],
-  Iphone: [
-    { id: "i1", name: "iPhone 13", price: 7999, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKjSwZ0N2EgMIZ3UM8S8gFYwrt18WBLQjvgbDyfyf3fPGWXMW9jkhfCDzxpdItcrrFouk&usqp=CAU" },
-    { id: "i2", name: "iPhone 14", price: 4999, img: "https://acdn-us.mitiendanube.com/stores/003/635/363/products/ca89ce230229051caa417a575fec341b-915f3a7f2721c5e80317083859114231-1024-1024.jpg" },
-    { id: "i3", name: "iPhone 13 Pro", price: 5999, img: "https://m.media-amazon.com/images/I/41yGCey9asL._AC_UF1000,1000_QL80_.jpg" },
-    { id: "i4", name: "iPhone 16", price: 5500, img: "https://cf-images.dustin.eu/cdn-cgi/image/fit=contain,format=auto,quality=75,width=828,fit=contain/image/d2000012787115/apple-iphone-16-128gb-wit.jpg" },
-    { id: "i5", name: "iPhone 12 Mini", price: 3999, img: "https://m.media-amazon.com/images/I/61xjsVCiLVL._AC_UF1000,1000_QL80_.jpg" }
-  ],
-  Motorola: [
-    { id: "m1", name: "Motorola Edge 30 Pro", price: 3999, img: "https://motorolaus.vtexassets.com/arquivos/ids/157942-1600-auto?v=637978464020630000&width=1600&height=auto&aspect=true" },
-    { id: "m2", name: "Moto G200", price: 2699, img: "ggg" },
-    { id: "m3", name: "Moto G71", price: 1699, img: "ggg" },
-    { id: "m4", name: "Moto E40", price: 899, img: "https://motorolaus.vtexassets.com/arquivos/ids/161032-1600-auto?v=638363848301030000&width=1600&height=auto&aspect=true" },
-    { id: "m5", name: "Razr 5G", price: 7499, img: "ggg" }
-  ],
-  Redmi: [
-    { id: "r1", name: "Redmi Note 11 Pro", price: 1849, img: "https://cdn.shopify.com/s/files/1/2321/2136/products/RedmiNote11Pro_1_grande.png?v=1667481743" },
-    { id: "r2", name: "Redmi 10", price: 1099, img: "https://i01.appmifile.com/webfile/globalimg/products/pc/redmi10/specs-header.png" },
-    { id: "r3", name: "Redmi Note 10", price: 1299, img: "https://cdn.shopify.com/s/files/1/2321/2136/products/RedmiNote10_1_grande.png?v=1631886767" },
-    { id: "r4", name: "Redmi K40", price: 2499, img: "https://cdn.shopify.com/s/files/1/2321/2136/products/K40-5G-Specs.png?v=1628172605" },
-    { id: "r5", name: "Redmi 9", price: 799, img: "https://cdn.shopify.com/s/files/1/2321/2136/products/Redmi9_Note9_2021_21.png?v=1616702121" }
-  ],
-  Poco: [
-    { id: "p1", name: "Poco X5 Pro 5G", price: 1999, img: "https://images-na.ssl-images-amazon.com/images/I/61ZUHXn2UQL._AC_SL1500_.jpg" },
-    { id: "p2", name: "Poco F4", price: 2499, img: "https://cdn-images-1.medium.com/max/1200/1*VaMk8eYiMMO0tpPHNQ-utw.jpeg" },
-    { id: "p3", name: "Poco M4 Pro", price: 1399, img: "https://fdn2.gsmarena.com/vv/pics/poco/poco-m4-pro-5g-1.jpg" },
-    { id: "p4", name: "Poco X3 Pro", price: 1699, img: "https://fdn2.gsmarena.com/vv/pics/poco/poco-x3-pro-1.jpg" },
-    { id: "p5", name: "Poco C40", price: 799, img: "https://fdn2.gsmarena.com/vv/pics/poco/poco-c40-1.jpg" }
-  ]
-};
-
-// Estado do app
-let allProducts = [];
-let filteredProducts = [];
-let cart = {};
-
-const productsContainer = document.getElementById("productsContainer");
-const searchInput = document.getElementById("searchInput");
-const cartToggleBtn = document.getElementById("cartToggleBtn");
-const cartSidebar = document.getElementById("cart");
-const cartItemsContainer = document.getElementById("cartItems");
-const cartTotalElem = document.getElementById("cartTotal");
-const cartCountElem = document.getElementById("cartCount");
-const checkoutBtn = document.getElementById("checkoutBtn");
-const closeCartBtn = document.getElementById("closeCartBtn");
-const brandLogos = document.querySelectorAll(".brand-logo");
-
-// Inicializa o app carregando todos os produtos
-function initialize() {
-  // Junta todos os produtos em um array único
-  allProducts = [].concat(...Object.values(productsData));
-  filteredProducts = allProducts;
-  renderProducts(filteredProducts);
-  updateCartCount();
-  setupEventListeners();
-  startCarousel();
-}
-  
-// Renderiza os produtos na tela (array de produtos)
-function renderProducts(products) {
-  productsContainer.innerHTML = "";
-  if(products.length === 0){
-    productsContainer.innerHTML = `<p style="color:#ccc;text-align:center;">Nenhum produto encontrado.</p>`;
-    return;
-  }
-  for (const p of products) {
-    const card = document.createElement("div");
-    card.className = "product-card";
-    card.innerHTML = `
-      <img src="${p.img}" alt="${p.name}" class="product-image" loading="lazy" />
-      <div class="product-name">${p.name}</div>
-      <div class="product-price">R$ ${p.price.toFixed(2)}</div>
-      <button class="add-cart-btn" data-id="${p.id}">Adicionar ao Carrinho</button>
-    `;
-    productsContainer.appendChild(card);
-  }
-  // Add event listeners para botões adicionar
-  document.querySelectorAll(".add-cart-btn").forEach(btn => {
-    btn.addEventListener("click", addToCartHandler);
-  });
-}
-
-// Filtra produtos por marca
-function filterByBrand(brand) {
-  brandLogos.forEach(logo => {
-    if (logo.dataset.brand === brand) {
-      logo.classList.add("active");
-    } else {
-      logo.classList.remove("active");
+document.addEventListener('DOMContentLoaded', function() {
+  // Classe para gerenciar produtos
+  class ProductManager {
+    constructor() {
+      this.products = [
+        {
+          id: 1,
+          name: " Redragon Kumara Pro Magnético",
+          price: 4999.99,
+          category: "teclado",
+          brand: "Redragon",
+          image: "Redragon.avif",
+          description: "Switches: SWITCH MAGNÉTICO REDRAGON, Acionamento: MAGNÉTICO, Hotswap DIY: SIM, COR: PRETO"
+        },
+        {
+          id: 2,
+          name: "Notebook Dell XPS 15",
+          price: 8999.99,
+          category: "notebooks",
+          brand: "Dell",
+          image: "https://via.placeholder.com/300x300?text=Dell+XPS+15",
+          description: "Notebook premium com tela 4K e processador Intel Core i9."
+        },
+        {
+          id: 3,
+          name: "Fone Sony WH-1000XM5",
+          price: 1999.99,
+          category: "perifericos",
+          brand: "Sony",
+          image: "https://via.placeholder.com/300x300?text=Sony+WH-1000XM5",
+          description: "Fone com cancelamento de ruído líder do mercado."
+        },
+        {
+          id: 4,
+          name: "Teclado Razer BlackWidow",
+          price: 899.99,
+          category: "perifericos",
+          brand: "Razer",
+          image: "https://via.placeholder.com/300x300?text=Razer+BlackWidow",
+          description: "Teclado mecânico para jogos com switches Razer Green."
+        },
+        {
+          id: 5,
+          name: "Mouse Logitech MX Master 3",
+          price: 599.99,
+          category: "perifericos",
+          brand: "Logitech",
+          image: "https://via.placeholder.com/300x300?text=Logitech+MX+Master+3",
+          description: "Mouse ergonômico para produtividade."
+        },
+        {
+          id: 6,
+          name: "Monitor LG UltraWide 34'",
+          price: 3499.99,
+          category: "perifericos",
+          brand: "LG",
+          image: "https://via.placeholder.com/300x300?text=LG+UltraWide+34",
+          description: "Monitor curvado UltraWide 3440x1440."
+        },
+        {
+          id: 7,
+          name: "Mouse Pad HyperX Fury S",
+          price: 149.99,
+          category: "perifericos",
+          brand: "HyperX",
+          image: "https://via.placeholder.com/300x300?text=HyperX+Fury+S",
+          description: "Mouse pad de tecido para jogos."
+        },
+        {
+          id: 8,
+          name: "Memória RAM Corsair 32GB",
+          price: 1299.99,
+          category: "componentes",
+          brand: "Corsair",
+          image: "https://via.placeholder.com/300x300?text=Corsair+32GB+DDR5",
+          description: "Kit de memória RAM DDR5 5200MHz."
+        }
+      ];
     }
-  });
-  filteredProducts = allProducts.filter(p => getBrandById(p.id) === brand);
-  renderProducts(filteredProducts);
-}
 
-// Detecta marca a partir do id (prefixo)
-function getBrandById(id) {
-  const prefix = id[0];
-  switch (prefix) {
-    case "s": return "Samsung";
-    case "i": return "Iphone";
-    case "m": return "Motorola";
-    case "r": return "Redmi";
-    case "p": return "Poco";
-    default: return "";
-  }
-}
-
-// Pesquisa produtos pelo nome (substring)
-function searchProducts() {
-  const query = searchInput.value.toLowerCase().trim();
-  if(query === ""){
-    // se pesquisa vazia, mostra produtos filtrados pela marca ativa ou todos
-    const activeBrandLogo = document.querySelector(".brand-logo.active");
-    if(activeBrandLogo) filterByBrand(activeBrandLogo.dataset.brand);
-    else {
-      filteredProducts = allProducts;
-      renderProducts(filteredProducts);
+    getFeaturedProducts() {
+      return this.products.slice(0, 8); // Retorna os 8 primeiros como mais vendidos
     }
-  } else {
-    const result = filteredProducts.filter(p => p.name.toLowerCase().includes(query));
-    renderProducts(result);
-  }
-}
 
-// Adiciona produto ao carrinho
-function addToCartHandler(e) {
-  const id = e.target.dataset.id;
-  if (!cart[id]) {
-    const product = allProducts.find(p => p.id === id);
-    cart[id] = { ...product, quantity: 1 };
-  } else {
-    cart[id].quantity++;
-  }
-  updateCartCount();
-  renderCart();
-}
+    getProductById(id) {
+      return this.products.find(product => product.id === id);
+    }
 
-// Atualiza contador total de itens no carrinho
-function updateCartCount() {
-  const totalQty = Object.values(cart).reduce((sum, item) => sum + item.quantity, 0);
-  cartCountElem.textContent = totalQty;
-}
-
-// Renderiza itens do carrinho no sidebar
-function renderCart() {
-  cartItemsContainer.innerHTML = "";
-  if (Object.keys(cart).length === 0) {
-    cartItemsContainer.innerHTML = `<p style="color:#999;text-align:center;">Carrinho vazio.</p>`;
-    cartTotalElem.textContent = "0.00";
-    return;
-  }
-  let total = 0;
-  for (const id in cart) {
-    const item = cart[id];
-    total += item.price * item.quantity;
-    const cartItemDiv = document.createElement("div");
-    cartItemDiv.className = "cart-item";
-    cartItemDiv.innerHTML = `
-      <img src="${item.img}" alt="${item.name}" />
-      <div class="cart-item-info">
-        <div class="cart-item-name">${item.name}</div>
-        <div class="cart-item-qty">
-          <button class="qty-btn" data-id="${id}" data-action="decrease">-</button>
-          <span>${item.quantity}</span>
-          <button class="qty-btn" data-id="${id}" data-action="increase">+</button>
-        </div>
-        <div class="cart-item-price">R$ ${(item.price * item.quantity).toFixed(2)}</div>
-      </div>
-    `;
-    cartItemsContainer.appendChild(cartItemDiv);
-  }
-  cartTotalElem.textContent = total.toFixed(2);
-
-  // add event buttons increase/decrease
-  document.querySelectorAll(".qty-btn").forEach(btn => {
-    btn.addEventListener("click", qtyBtnHandler);
-  });
-}
-
-// Manipula aumentos e reduções da quantidade no carrinho
-function qtyBtnHandler(e) {
-  const id = e.target.dataset.id;
-  const action = e.target.dataset.action;
-  if (action === "increase") {
-    cart[id].quantity++;
-  } else if (action === "decrease") {
-    cart[id].quantity--;
-    if (cart[id].quantity <= 0) {
-      delete cart[id];
+    getProductsByCategory(category) {
+      return this.products.filter(product => product.category === category);
     }
   }
-  updateCartCount();
-  renderCart();
-}
 
-// Alterna visibilidade do carrinho
-function toggleCart() {
-  cartSidebar.classList.toggle("open");
-}
+  // Classe para gerenciar o carrinho
+  class CartManager {
+    constructor() {
+      this.cart = [];
+    }
 
-// Finalizar compra
-function checkout() {
-  if(Object.keys(cart).length === 0){
-    alert("O carrinho está vazio!");
-    return;
-  }
-  alert("Compra finalizada com sucesso! Obrigado.");
-  cart = {};
-  updateCartCount();
-  renderCart();
-  toggleCart();
-}
-
-// Configura eventos da UI
-function setupEventListeners() {
-  // Pesquisa produtos
-  searchInput.addEventListener("input", searchProducts);
-
-  // Toggle carrinho
-  cartToggleBtn.addEventListener("click", toggleCart);
-  closeCartBtn.addEventListener("click", toggleCart);
-
-  // Finalizar compra
-  checkoutBtn.addEventListener("click", checkout);
-
-  // Clicar na marca
-  brandLogos.forEach(logo => {
-    logo.addEventListener("click", () => {
-      if(logo.classList.contains("active")){
-        // desativa filtro
-        logo.classList.remove("active");
-        filteredProducts = allProducts;
-        renderProducts(filteredProducts);
+    addProduct(product) {
+      const existingItem = this.cart.find(item => item.id === product.id);
+      
+      if (existingItem) {
+        existingItem.quantity += 1;
       } else {
-        filterByBrand(logo.dataset.brand);
+        this.cart.push({
+          ...product,
+          quantity: 1
+        });
       }
-      // limpa pesquisa
-      searchInput.value = "";
-    });
-  });
-}
+    }
 
-// CARROSSEL
-let carouselIndex = 0;
-const carouselImages = document.querySelectorAll(".carousel-image");
-const prevSlideBtn = document.getElementById("prevSlide");
-const nextSlideBtn = document.getElementById("nextSlide");
+    removeProduct(productId) {
+      this.cart = this.cart.filter(item => item.id !== productId);
+    }
 
-function showSlide(index) {
-  carouselImages.forEach((img, i) => {
-    img.classList.toggle("hidden", i !== index);
-  });
-}
+    getTotal() {
+      return this.cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+    }
 
-function nextSlide() {
-  carouselIndex++;
-  if(carouselIndex >= carouselImages.length) carouselIndex = 0;
-  showSlide(carouselIndex);
-}
+    clearCart() {
+      this.cart = [];
+    }
+  }
 
-function prevSlide() {
-  carouselIndex--;
-  if(carouselIndex < 0) carouselIndex = carouselImages.length - 1;
-  showSlide(carouselIndex);
-}
+  // Classe para gerenciar a interface
+  class UI {
+    constructor() {
+      this.productManager = new ProductManager();
+      this.cartManager = new CartManager();
+      
+      // Elementos do DOM
+      this.elements = {
+        loginBtn: document.getElementById('loginBtn'),
+        cartBtn: document.getElementById('cartBtn'),
+        authModal: document.getElementById('authModal'),
+        cartModal: document.getElementById('cartModal'),
+        productModal: document.getElementById('productModal'),
+        closeButtons: document.querySelectorAll('.close'),
+        showRegister: document.getElementById('showRegister'),
+        showLogin: document.getElementById('showLogin'),
+        loginForm: document.getElementById('loginForm'),
+        registerForm: document.getElementById('registerForm'),
+        productsGrid: document.querySelector('.products-grid'),
+        cartItems: document.getElementById('cartItems'),
+        cartTotal: document.getElementById('cartTotal'),
+        checkoutBtn: document.getElementById('checkoutBtn'),
+        productDetails: document.getElementById('productDetails'),
+        carouselContainer: document.querySelector('.carousel-container'),
+        prevBtn: document.getElementById('prevBtn'),
+        nextBtn: document.getElementById('nextBtn'),
+        categoryCards: document.querySelectorAll('.category-card')
+      };
 
-function startCarousel() {
-  showSlide(carouselIndex);
-  prevSlideBtn.addEventListener("click", prevSlide);
-  nextSlideBtn.addEventListener("click", nextSlide);
-  // Auto slide a cada 5s
-  setInterval(nextSlide, 5000);
-}
+      // Estado do carrossel
+      this.currentSlide = 0;
+      this.slides = document.querySelectorAll('.carousel-slide');
+      this.totalSlides = this.slides.length;
 
-// Inicializa aplicação
-initialize();
+      // Inicialização
+      this.init();
+    }
+
+    init() {
+      this.loadFeaturedProducts();
+      this.setupEventListeners();
+      this.updateCarousel();
+    }
+
+    // Carregar produtos na página
+    loadFeaturedProducts() {
+      this.elements.productsGrid.innerHTML = '';
+      const featuredProducts = this.productManager.getFeaturedProducts();
+      
+      featuredProducts.forEach(product => {
+        const productCard = document.createElement('div');
+        productCard.className = 'product-card';
+        productCard.innerHTML = `
+          <img src="${product.image}" alt="${product.name}">
+          <div class="product-info">
+            <h3>${product.name}</h3>
+            <p>${product.brand}</p>
+            <p class="product-price">R$ ${product.price.toFixed(2)}</p>
+            <button class="add-to-cart" data-id="${product.id}">Adicionar ao Carrinho</button>
+          </div>
+        `;
+        this.elements.productsGrid.appendChild(productCard);
+        
+        // Adicionar evento de clique para ver detalhes
+        productCard.addEventListener('click', () => this.showProductDetails(product.id));
+      });
+    }
+
+    // Mostrar detalhes do produto
+    showProductDetails(productId) {
+      const product = this.productManager.getProductById(productId);
+      if (!product) return;
+      
+      this.elements.productDetails.innerHTML = `
+        <img src="${product.image}" alt="${product.name}" class="product-modal-image">
+        <div class="product-modal-info">
+          <h3>${product.name}</h3>
+          <p class="product-modal-price">R$ ${product.price.toFixed(2)}</p>
+          <p class="product-modal-description">${product.description}</p>
+          <button class="buy-now-btn" data-id="${product.id}">Comprar Agora</button>
+        </div>
+      `;
+      
+      // Adicionar evento ao botão de comprar
+      const buyNowBtn = document.querySelector('.buy-now-btn');
+      buyNowBtn.addEventListener('click', () => {
+        this.addToCart(product.id);
+        this.hideModal(this.elements.productModal);
+        this.showModal(this.elements.cartModal);
+      });
+      
+      this.showModal(this.elements.productModal);
+    }
+
+    // Adicionar produto ao carrinho
+    addToCart(productId) {
+      const product = this.productManager.getProductById(productId);
+      if (!product) return;
+      
+      this.cartManager.addProduct(product);
+      this.updateCart();
+    }
+
+    // Atualizar visualização do carrinho
+    updateCart() {
+      this.elements.cartItems.innerHTML = '';
+      
+      if (this.cartManager.cart.length === 0) {
+        this.elements.cartItems.innerHTML = '<p class="empty-cart">Seu carrinho está vazio</p>';
+        this.elements.cartTotal.textContent = '0,00';
+        return;
+      }
+      
+      this.cartManager.cart.forEach(item => {
+        const cartItem = document.createElement('div');
+        cartItem.className = 'cart-item';
+        cartItem.innerHTML = `
+          <img src="${item.image}" alt="${item.name}" width="60">
+          <div class="cart-item-info">
+            <h4>${item.name}</h4>
+            <p>${item.quantity} x R$ ${item.price.toFixed(2)}</p>
+          </div>
+          <p class="cart-item-price">R$ ${(item.quantity * item.price).toFixed(2)}</p>
+          <button class="remove-item" data-id="${item.id}">&times;</button>
+        `;
+        this.elements.cartItems.appendChild(cartItem);
+        
+        // Adicionar evento para remover item
+        const removeBtn = cartItem.querySelector('.remove-item');
+        removeBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          this.removeFromCart(item.id);
+        });
+      });
+      
+      this.elements.cartTotal.textContent = this.cartManager.getTotal().toFixed(2);
+    }
+
+    // Remover produto do carrinho
+    removeFromCart(productId) {
+      this.cartManager.removeProduct(productId);
+      this.updateCart();
+    }
+
+    // Finalizar compra
+    checkout() {
+      alert('Compra finalizada com sucesso! Obrigado por comprar na TechStore.');
+      this.cartManager.clearCart();
+      this.updateCart();
+    }
+
+    // Carrossel
+    updateCarousel() {
+      this.elements.carouselContainer.style.transform = `translateX(-${this.currentSlide * 100}%)`;
+    }
+
+    nextSlide() {
+      this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
+      this.updateCarousel();
+    }
+
+    prevSlide() {
+      this.currentSlide = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
+      this.updateCarousel();
+    }
+
+    // Mostrar modal
+    showModal(modal) {
+      modal.style.display = 'block';
+    }
+
+    // Esconder modal
+    hideModal(modal) {
+      modal.style.display = 'none';
+    }
+
+    // Configurar event listeners
+    setupEventListeners() {
+      // Login e Carrinho
+      this.elements.loginBtn.addEventListener('click', () => {
+        this.showModal(this.elements.authModal);
+        this.elements.loginForm.style.display = 'block';
+        this.elements.registerForm.style.display = 'none';
+      });
+
+      this.elements.cartBtn.addEventListener('click', () => {
+        this.showModal(this.elements.cartModal);
+      });
+
+      // Fechar modais
+      this.elements.closeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          this.hideModal(this.elements.authModal);
+          this.hideModal(this.elements.cartModal);
+          this.hideModal(this.elements.productModal);
+        });
+      });
+
+      // Alternar entre login e registro
+      this.elements.showRegister.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.elements.loginForm.style.display = 'none';
+        this.elements.registerForm.style.display = 'block';
+      });
+
+      this.elements.showLogin.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.elements.registerForm.style.display = 'none';
+        this.elements.loginForm.style.display = 'block';
+      });
+
+      // Fechar modais ao clicar fora
+      window.addEventListener('click', (e) => {
+        if (e.target === this.elements.authModal) {
+          this.hideModal(this.elements.authModal);
+        }
+        if (e.target === this.elements.cartModal) {
+          this.hideModal(this.elements.cartModal);
+        }
+        if (e.target === this.elements.productModal) {
+          this.hideModal(this.elements.productModal);
+        }
+      });
+
+      // Adicionar ao carrinho - evento delegado
+      document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('add-to-cart')) {
+          const productId = parseInt(e.target.getAttribute('data-id'));
+          this.addToCart(productId);
+          
+          // Feedback visual
+          e.target.textContent = 'Adicionado!';
+          e.target.style.backgroundColor = '#4CAF50';
+          setTimeout(() => {
+            e.target.textContent = 'Adicionar ao Carrinho';
+            e.target.style.backgroundColor = '#4a6fa5';
+          }, 1000);
+        }
+      });
+
+      // Finalizar compra
+      this.elements.checkoutBtn.addEventListener('click', () => this.checkout());
+
+      // Carrossel
+      this.elements.nextBtn.addEventListener('click', () => this.nextSlide());
+      this.elements.prevBtn.addEventListener('click', () => this.prevSlide());
+
+      // Categorias
+      this.elements.categoryCards.forEach(card => {
+        card.addEventListener('click', () => {
+          const category = card.getAttribute('data-category');
+          this.loadProductsByCategory(category);
+        });
+      });
+    }
+
+    // Carregar produtos por categoria
+    loadProductsByCategory(category) {
+      this.elements.productsGrid.innerHTML = '<h2 style="grid-column: 1 / -1;">' + 
+        category.charAt(0).toUpperCase() + category.slice(1) + '</h2>';
+      
+      const categoryProducts = this.productManager.getProductsByCategory(category);
+      
+      if (categoryProducts.length === 0) {
+        this.elements.productsGrid.innerHTML += '<p style="grid-column: 1 / -1;">Nenhum produto encontrado nesta categoria.</p>';
+        return;
+      }
+      
+      categoryProducts.forEach(product => {
+        const productCard = document.createElement('div');
+        productCard.className = 'product-card';
+        productCard.innerHTML = `
+          <img src="${product.image}" alt="${product.name}">
+          <div class="product-info">
+            <h3>${product.name}</h3>
+            <p>${product.brand}</p>
+            <p class="product-price">R$ ${product.price.toFixed(2)}</p>
+            <button class="add-to-cart" data-id="${product.id}">Adicionar ao Carrinho</button>
+          </div>
+        `;
+        this.elements.productsGrid.appendChild(productCard);
+        
+        productCard.addEventListener('click', () => this.showProductDetails(product.id));
+      });
+    }
+  }
+
+  // Inicializar a aplicação
+  const app = new UI();
+});

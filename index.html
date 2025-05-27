@@ -1,298 +1,189 @@
-<!DOCTYPE html>  
-<html lang="pt-BR">  
-<head>  
-
- 
-
-  <meta charset="UTF-8" />  
-
- 
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />  
-
- 
-
-  <title>Loja de Eletrônicos</title>  
-
- 
-
-  <link rel="stylesheet" href="style.css" />  
-
- 
-
-</head>  
-<body>  
-
- 
-
-  <header>  
-
- 
-
-    <div class="logo-container">  
-
- 
-
-      <img src="Dark Tech.png" alt="Logo da Loja" class="logo" />  
-
- 
-
-      <h1>Dark-Tech</h1>  
-
- 
-
-    </div>  
-
- 
-
-    <input type="search" id="searchInput" placeholder="Pesquisar produtos..." aria-label="Pesquisar produtos" />  
-
- 
-
-    <button id="cartToggleBtn" title="Ver carrinho">Carrinho (<span id="cartCount">0</span>)</button>  
-
- 
-
-  </header>  
-
- 
-
-  
-
- 
-
-  <section class="carousel-section">  
-
- 
-
-    <div class="carousel-container" id="carousel">  
-
- 
-
-      <img class="carousel-image" src="https://img.freepik.com/psd-gratuitas/novo-modelo-de-design-de-capa-de-midia-social-para-smartphone_47987-25433.jpg" alt="Samsung Galaxy" />  
-
- 
-
-      <img class="carousel-image hidden" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7VjVlR-bRvaf37CoqNT2a0sgErpOEAwxF0Q&s" alt="iPhone" />  
-
- 
-
-      <img class="carousel-image hidden" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDKZrTunWRebvJ1O2eWFdIMNgvCdbThiGw4g&s" alt="Motorola" />  
-
- 
-
-      <img class="carousel-image hidden" src="https://samsung.com.br/services/assets/images/para-voce-banner2-20230225.jpg" alt="Redmi" />  
-
- 
-
-      <img class="carousel-image hidden" src="https://etimg.etb2bimg.com/photo/96783408.cms" alt="Poco" />  
-
- 
-
-    </div>  
-
- 
-
-    <button id="prevSlide" aria-label="Imagem anterior">&#10094;</button>  
-
- 
-
-    <button id="nextSlide" aria-label="Próxima imagem">&#10095;</button>  
-
- 
-
-  </section>  
-
- 
-
-  
-
- 
-
-  <section class="brands-section">  
-
- 
-
-    <h2>Marcas</h2>  
-
- 
-
-    <div class="brands-container">  
-
- 
-
-      <img src="https://images.samsung.com/is/image/samsung/assets/global/about-us/brand/logo/256_144_4.png?$512_N_PNG$" alt="Samsung" class="brand-logo" data-brand="Samsung" />  
-
- 
-
-      <img src="https://wallpapers.com/images/hd/plain-logo-macbook-air-xxznnlc3edutq5ve.jpg" alt="Iphone" class="brand-logo" data-brand="Iphone" />  
-
- 
-
-      <img src="https://static.vecteezy.com/ti/vetor-gratis/t1/20927102-motorola-marca-logotipo-telefone-simbolo-azul-projeto-eua-movel-ilustracao-com-preto-fundo-gratis-vetor.jpg" alt="Motorola" class="brand-logo" data-brand="Motorola" />  
-
- 
-
-      <img src="https://t2.tudocdn.net/519252?w=1920&h=1080" alt="Redmi" class="brand-logo" data-brand="Redmi" />  
-
- 
-
-      <img src="https://t2.tudocdn.net/523258?w=1200&h=1200" alt="Poco" class="brand-logo" data-brand="Poco" />  
-
- 
-
-    </div>  
-
- 
-
-  </section>  
-
- 
-
-  
-
- 
-
-  <section class="products-section">  
-
- 
-
-    <h2>Produtos</h2>  
-
- 
-
-    <div class="products-container" id="productsContainer">  
-
- 
-
-      <!-- Produtos carregados pelo JS -->  
-
- 
-
-    </div>  
-
- 
-
-  </section>  
-
- 
-
-  
-
- 
-
-  <aside class="cart" id="cart">  
-
- 
-
-    <h2>Carrinho</h2>  
-
- 
-
-    <div id="cartItems"></div>  
-
- 
-
-    <div class="cart-total">  
-
- 
-
-      Total: R$ <span id="cartTotal">0.00</span>  
-
- 
-
-    </div>  
-
- 
-
-    <button id="checkoutBtn">Finalizar Compra</button>  
-
- 
-
-    <button id="closeCartBtn">Fechar</button>  
-
- 
-
-  </aside>  
-
- 
-
-  
-
- 
-
-  <footer>  
-
- 
-
-    <section class="about-section">  
-
- 
-
-      <h3>Sobre a Empresa</h3>  
-
- 
-
-      <p>Somos uma loja especializada em tecnologia, trazendo os melhores smartphones e acessórios para você.</p>  
-
- 
-
-    </section>  
-
- 
-
-    <section class="social-section">  
-
- 
-
-      <h3>Redes Sociais</h3>  
-
- 
-
-      <a href="ggggg" target="_blank" rel="noopener" aria-label="Facebook">Facebook</a> |  
-
- 
-
-      <a href="gggggg" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a> |  
-
- 
-
-      <a href="gggggg" target="_blank" rel="noopener" aria-label="Twitter">Twitter</a>  
-
- 
-
-    </section>  
-
- 
-
-  </footer>  
-
- 
-
-  
-
- 
-
-  <script src="script.js"></script>  
-
- 
-
-</body>  
-
- 
-
-</html>  
-
- 
-
-  
-
- 
-
-  
-
- 
-
- 
-
- 
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore - Sua Loja de Eletrônicos</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>E-Compras </h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Produtos</a></li>
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
+        </nav>
+        <div class="user-actions">
+            <button id="loginBtn"><i class="fas fa-user"></i> Login</button>
+            <button id="cartBtn"><i class="fas fa-shopping-cart"></i> Carrinho</button>
+        </div>
+    </header>
+
+    <!-- Modal de Login/Cadastro -->
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="loginForm">
+                <h2>Login</h2>
+                <form>
+                    <input type="email" placeholder="E-mail" required>
+                    <input type="password" placeholder="Senha" required>
+                    <button type="submit">Entrar</button>
+                </form>
+                <p>Não tem uma conta? <a href="#" id="showRegister">Cadastre-se</a></p>
+            </div>
+            <div id="registerForm" style="display: none;">
+                <h2>Criar Conta</h2>
+                <form>
+                    <input type="text" placeholder="Nome Completo" required>
+                    <input type="email" placeholder="E-mail" required>
+                    <input type="text" placeholder="CPF" required>
+                    <input type="text" placeholder="CEP" required>
+                    <input type="text" placeholder="Número de Telefone" required>
+                    <input type="number" placeholder="Idade" required>
+                    <input type="text" placeholder="Número do Cartão" required>
+                    <input type="password" placeholder="Senha" required>
+                    <button type="submit">Cadastrar</button>
+                </form>
+                <p>Já tem uma conta? <a href="#" id="showLogin">Faça login</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal do Carrinho -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Seu Carrinho</h2>
+            <div id="cartItems">
+                <!-- Itens do carrinho serão adicionados aqui via JavaScript -->
+                <p class="empty-cart">Seu carrinho está vazio</p>
+            </div>
+            <div class="cart-total">
+                <p>Total: R$ <span id="cartTotal">0,00</span></p>
+                <button id="checkoutBtn">Finalizar Compra</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Produto -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="productDetails">
+                <!-- Detalhes do produto serão adicionados aqui via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Carrossel de Banners -->
+    <section class="banner-carousel" id="home">
+        <div class="carousel-container">
+            <div class="carousel-slide">
+                <img src="ff.jpg" alt="Promoção de Smartphones">
+            </div>
+            <div class="carousel-slide">
+                <img src="Flip6_banner00_desktop.png" alt="Ofertas de Notebooks">
+            </div>
+            <div class="carousel-slide">
+                <img src="banner xiaomi 940x380.png" alt="Peças para PC Gamer">
+            </div>
+            <button class="carousel-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+            <button class="carousel-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <!-- Seção de Mais Vendidos -->
+    <section class="featured-section" id="products">
+        <h2>Mais Vendidos</h2>
+        <div class="products-grid">
+            <!-- Produtos serão adicionados via JavaScript -->
+        </div>
+    </section>
+
+    <!-- Seção de Marcas -->
+    <section class="brands-section">
+        <h2>Nossas Marcas</h2>
+        <div class="brands-grid">
+            <img src="sansung2.png"Samsung">
+            <img src="tt.png" alt="Apple">
+            <img src="Dell.png" alt="Dell">
+            <img src="hp.jpg" alt="HP">
+            <img src="lenovo.png" alt="Lenovo">
+            <img src="asus.png" alt="Asus">
+            <img src="intel.jpg" alt="Intel">
+            <img src="nvidea.jpg" alt="NVIDIA">
+        </div>
+    </section>
+
+    <!-- Seção de Categorias -->
+    <section class="categories-section">
+        <h2>Categorias</h2>
+        <div class="categories-grid">
+            <div class="category-card" data-category="celulares">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Celulares</h3>
+            </div>
+            <div class="category-card" data-category="notebooks">
+                <i class="fas fa-laptop"></i>
+                <h3>Notebooks</h3>
+            </div>
+            <div class="category-card" data-category="pcs">
+                <i class="fas fa-desktop"></i>
+                <h3>PCs</h3>
+            </div>
+            <div class="category-card" data-category="perifericos">
+                <i class="fas fa-keyboard"></i>
+                <h3>Periféricos</h3>
+            </div>
+            <div class="category-card" data-category="componentes">
+                <i class="fas fa-microchip"></i>
+                <h3>Componentes</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Sobre a Loja -->
+    <section class="about-section" id="about">
+        <h2>Sobre a TechStore</h2>
+        <p>A TechStore é uma loja especializada em produtos de tecnologia, oferecendo as melhores marcas e os preços mais competitivos do mercado. Nossa missão é proporcionar a melhor experiência de compra online, com atendimento personalizado e entrega rápida.</p>
+        <p>Fundada em 2015, já atendemos mais de 5 Milhãos clientes satisfeitos em todo o Brasil. Nossa equipe é composta por especialistas em tecnologia prontos para te ajudar a encontrar o produto perfeito para suas necessidades.</p>
+    </section>
+
+    <!-- Seção de Contato e Redes Sociais -->
+    <section class="contact-section" id="contact">
+        <h2>Contato e Redes Sociais</h2>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3>Informações de Contato</h3>
+                <p><i class="fas fa-phone"></i> (18) 99682-8219</p>
+                <p><i class="fas fa-envelope"></i>  ecompras.loja@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Av. Paulista, 1000 - São Paulo/SP</p>
+            </div>
+            <div class="social-media">
+                <h3>Redes Sociais</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 TechStore. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
