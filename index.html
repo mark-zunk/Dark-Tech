@@ -10,7 +10,7 @@
 <body>
     <header>
         <div class="logo">
-            <h1>E-Compras </h1>
+            <h1>E-Compras</h1>
         </div>
         <nav>
             <ul>
@@ -63,7 +63,6 @@
             <span class="close">&times;</span>
             <h2>Seu Carrinho</h2>
             <div id="cartItems">
-                <!-- Itens do carrinho serão adicionados aqui via JavaScript -->
                 <p class="empty-cart">Seu carrinho está vazio</p>
             </div>
             <div class="cart-total">
@@ -77,9 +76,7 @@
     <div id="productModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <div id="productDetails">
-                <!-- Detalhes do produto serão adicionados aqui via JavaScript -->
-            </div>
+            <div id="productDetails"></div>
         </div>
     </div>
 
@@ -112,14 +109,14 @@
     <section class="brands-section">
         <h2>Nossas Marcas</h2>
         <div class="brands-grid">
-            <img src="sansung2.png"Samsung">
-            <img src="tt.png" alt="Apple">
-            <img src="Dell.png" alt="Dell">
-            <img src="hp.jpg" alt="HP">
-            <img src="lenovo.png" alt="Lenovo">
-            <img src="asus.png" alt="Asus">
-            <img src="intel.jpg" alt="Intel">
-            <img src="nvidea.jpg" alt="NVIDIA">
+            <img src="sansung2.png" data-category="celulares" alt="Samsung">
+            <img src="tt.png" data-category="celulares" alt="Apple">
+            <img src="Dell.png" data-category="notebooks" alt="Dell">
+            <img src="hp.jpg" data-category="notebooks" alt="HP">
+            <img src="lenovo.png" data-category="notebooks" alt="Lenovo">
+            <img src="asus.png" data-category="notebooks" alt="Asus">
+            <img src="intel.jpg" data-category="componentes" alt="Intel">
+            <img src="nvidea.jpg" data-category="componentes" alt="NVIDIA">
         </div>
     </section>
 
@@ -152,9 +149,9 @@
 
     <!-- Seção Sobre a Loja -->
     <section class="about-section" id="about">
-        <h2>Sobre a TechStore</h2>
-        <p>A TechStore é uma loja especializada em produtos de tecnologia, oferecendo as melhores marcas e os preços mais competitivos do mercado. Nossa missão é proporcionar a melhor experiência de compra online, com atendimento personalizado e entrega rápida.</p>
-        <p>Fundada em 2015, já atendemos mais de 5 Milhãos clientes satisfeitos em todo o Brasil. Nossa equipe é composta por especialistas em tecnologia prontos para te ajudar a encontrar o produto perfeito para suas necessidades.</p>
+        <h2>Sobre a E-COMPRAS</h2>
+        <p>A E-COMPRAS é uma loja especializada em produtos de tecnologia, oferecendo as melhores marcas e os preços mais competitivos do mercado. Nossa missão é proporcionar a melhor experiência de compra online, com atendimento personalizado e entrega rápida.</p>
+        <p>Fundada em 2015, já atendemos mais de 5 Milhões de clientes satisfeitos em todo o Brasil. Nossa equipe é composta por especialistas em tecnologia prontos para te ajudar a encontrar o produto perfeito para suas necessidades.</p>
     </section>
 
     <!-- Seção de Contato e Redes Sociais -->
@@ -164,7 +161,7 @@
             <div class="contact-info">
                 <h3>Informações de Contato</h3>
                 <p><i class="fas fa-phone"></i> (18) 99682-8219</p>
-                <p><i class="fas fa-envelope"></i>  ecompras.loja@gmail.com</p>
+                <p><i class="fas fa-envelope"></i> ecompras.loja@gmail.com</p>
                 <p><i class="fas fa-map-marker-alt"></i> Av. Paulista, 1000 - São Paulo/SP</p>
             </div>
             <div class="social-media">

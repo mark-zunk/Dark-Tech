@@ -7,7 +7,7 @@
 }
 
 body {
-    background-color: #f5f5f5;
+    background-color: #f1f1f1;
     color: #333;
     line-height: 1.6;
 }
@@ -15,7 +15,7 @@ body {
 /* Header */
 header {
     background-color: #ffffff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(148, 124, 124, 0.1);
     padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
@@ -284,7 +284,8 @@ section h2 {
 
 .brands-grid img {
     max-width: 100%;
-    height: auto;
+    height: 80px; /* Altura fixa para as imagens das marcas */
+    object-fit: contain; /* Mantém a proporção da imagem */
     filter: grayscale(100%);
     transition: filter 0.3s;
 }
@@ -528,11 +529,7 @@ footer {
     }
 
     nav ul li {
-        margin-left: 1rem;
-    }
-
-    .user-actions {
-        margin-top: 1rem;
+        margin: 0.5rem 0;
     }
 
     .carousel-container {
@@ -551,10 +548,6 @@ footer {
         align-items: center;
     }
 
-    nav ul li {
-        margin: 0.5rem 0;
-    }
-
     .carousel-container {
         height: 200px;
     }
@@ -564,3 +557,4 @@ footer {
         font-size: 1rem;
     }
 }
+
